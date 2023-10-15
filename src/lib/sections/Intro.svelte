@@ -1,8 +1,9 @@
 <script lang="ts">
     import { onMount } from "svelte";
     let hello: HTMLHeadElement, name: HTMLHeadElement, profession: HTMLHeadElement, about: HTMLParagraphElement;
-    let role: string = "University Student"
-    let fill: string = "I'm a "
+    let role: string = "Web Developer"
+    let transformRole = "transform: scale(1);"
+    const currentRole = "University Student"
     onMount(()=>{
         // hello.style.color = "#00e5ff"
         // setTimeout(()=>{
@@ -16,21 +17,29 @@
         // }, 900)
 
         setTimeout(()=>{
-            role = "Web Developer"
+            transformRole = "transform: scale(0.6);"
+            setTimeout(()=>{
+                role = "iOS Developer"
+                transformRole = "transform: scale(1);"
+            }, 300)
         }, 5900)
-
         setTimeout(()=>{
-            role = "iOS Developer"
+            transformRole = "transform: scale(0.6);"
+            setTimeout(()=>{
+                role = currentRole
+                transformRole = "transform: scale(1);"
+            }, 300)
         }, 6900)
 
-        setTimeout(()=>{
-            role = "iOS Developer"
-        }, 7900)
 
-        setTimeout(()=>{
-            role = ""
-            fill = "I make things"
-        }, 8900)
+        // setTimeout(()=>{
+        //     role = "University Student"
+        // }, 7900)
+
+        // setTimeout(()=>{
+        //     role = ""
+        //     fill = "I make things"
+        // }, 8900)
     })
 </script>
 
@@ -40,9 +49,9 @@
         <div class="text-side">
             <h3 class="text blue intro-text" style="opacity:0;transform: translateY(50px);" bind:this={hello}>Hello, i'm</h3>
             <h1 class="title intro-text" style="opacity:0;transform: translateY(50px);" bind:this={name}>Rayhan Permana</h1>
-            <h2 class="subtitle off-white intro-text" style="opacity:0;transform: translateY(50px);" bind:this={profession}>{fill}{role}.</h2>
+            <h2 class="subtitle off-white intro-text" style="opacity:0;transform: translateY(50px);" bind:this={profession}>I'm a <span style="{transformRole} transition: transform 0.3s ease">{role}</span>.</h2>
             <!-- I'm currently working in Binus IT Division as a Web Developer Associate. -->
-            <p class="text intro-text" style="opacity:0;transform: translateY(50px);" bind:this={about}>I'm a Data Science student in Binus University. </p>
+            <p class="text intro-text" style="opacity:0;transform: translateY(50px);" bind:this={about}>I'm currently a student at Binus University, where i took a major at Data Science so i can learn how to create neural networks.</p>
         </div>
         <div class="image-side">
             
