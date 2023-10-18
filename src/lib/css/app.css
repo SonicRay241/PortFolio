@@ -85,3 +85,15 @@ p {
 .off-white {
     color: var(--off-white);
 }
+
+.hidden {
+    opacity: 0;
+}
+
+.testingg {
+    transition: opacity 1000ms ease;
+}
+
+.show {
+    opacity: 1;
+}
